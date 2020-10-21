@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #46b9b9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SingUpController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane layoutX="2.0" layoutY="110.0" prefHeight="415.0" prefWidth="800.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <AnchorPane layoutY="-8.0" prefHeight="54.0" prefWidth="800.0" style="-fx-background-color: #D3D3D3;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="339.0" layoutY="11.0" prefHeight="27.0" prefWidth="122.0" text="Sign Up">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <TextField fx:id="signUpFirstname" layoutX="237.0" layoutY="66.0" prefHeight="48.0" prefWidth="326.0" promptText="First Name" />
+                  <TextField fx:id="signUpLastname" layoutX="237.0" layoutY="133.0" prefHeight="48.0" prefWidth="326.0" promptText="Last Name" />
+                  <TextField fx:id="signUpUsername" layoutX="237.0" layoutY="199.0" prefHeight="48.0" prefWidth="326.0" promptText="Username" />
+                  <PasswordField fx:id="signUpPassword" layoutX="237.0" layoutY="264.0" prefHeight="48.0" prefWidth="326.0" promptText="Password" />
+                  <Button fx:id="submitButton" layoutX="325.0" layoutY="347.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #606060;" text="Submit" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="38.0" prefHeight="48.0" prefWidth="199.0" text="TO DO APP">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
