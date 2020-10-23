@@ -8,9 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.Database.DbHandler;
+import sample.model.User;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoginController {
 
@@ -29,16 +33,42 @@ public class LoginController {
     @FXML
     private URL location;
 
+    private DbHandler databaseHandler;
+
 
     @FXML
     void initialize() {
 
-        String loginText = loginUsername.getText().trim();
-        String loginPwd = loginPassword.getText().trim();
+        databaseHandler = new DbHandler();
+
+        loginButton.setOnAction(actionEvent -> {
+
+            String loginUser = loginUsername.getText().trim();
+            String loginPwd = loginPassword.getText().trim();
+            User user = new User();
+            user.setUsername(loginUser);
+            user.setPassword(loginPwd);
+
+            ResultSet userRow = databaseHandler.getUser(user);
+            int counter = 0;
+
+            try {
+                while (userRow.next()) {
+                    counter++;
+                    String name = userRow.getString("firstname");
+                    System.out.println("Welcome " + name);
+                }
+                if (counter == 1) {
+                    System.out.println("Login successful!");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
 
         loginSingupButton.setOnAction(event -> {
 
-                loginSingupButton.getScene().getWindow().hide();
+            loginSingupButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/fxml/singup.fxml"));
             try {
@@ -53,22 +83,7 @@ public class LoginController {
             stage.showAndWait();
 
         });
-
-        loginButton.setOnAction(ev -> {
-            if(!loginText.equals("") || !loginPwd.equals("")){
-                loginUser(loginText,loginPwd);
-            }else {
-                System.out.println("Error login in user");
-            }
-
-        });
-
     }
 
-    private void loginUser(String username, String password) {
-        //Check in the db if the user exists
-        //If true, take them to AddItemScreen
-
-    }
 
 }
