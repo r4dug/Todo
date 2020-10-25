@@ -9,6 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.Database.DbHandler;
+import sample.animation.Shaker;
 import sample.model.User;
 
 import java.io.IOException;
@@ -60,6 +61,11 @@ public class LoginController {
                 }
                 if (counter == 1) {
                     System.out.println("Login successful!");
+                } else {
+                    Shaker userNameShaker = new Shaker(loginUsername);
+                    Shaker passwordShaker = new Shaker(loginPassword);
+                    userNameShaker.shake();
+                    passwordShaker.shake();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
