@@ -1,7 +1,16 @@
 package sample.Database;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.util.Callback;
+import sample.model.Task;
 import sample.model.User;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 
 public class DbHandler extends Config{
@@ -69,4 +78,83 @@ public class DbHandler extends Config{
         return result;
     }
 
-}
+    public void addTask(Task task) {
+
+        String insert = "INSERT INTO " + Config.TASKS_TABLE + "(" + Config.TASKS_TASK + "," +
+                Config.TASKS_DATE + "," + Config.TASKS_DESCRIPTION + ")" + "VALUES(?,?,?)";
+
+        try {
+            PreparedStatement prepStatement = getDbConnection().prepareStatement(insert);
+            //aici trebuie luat id user-ului care e logat
+            prepStatement.setString(1, task.getTask());
+            prepStatement.setString(2, task.getDateCreated());
+            prepStatement.setString(3, task.getDescription());
+
+            prepStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public ResultSet showTasks(Task task) {
+        ResultSet result = null;
+
+        String query= "SELECT * FROM " + Config.TASKS_TABLE;
+
+        try {
+            PreparedStatement prepStatement = getDbConnection().prepareStatement(query);
+            prepStatement.setString(1,task.getTask());
+            prepStatement.setString(2,task.getDateCreated());
+            prepStatement.setString(2,task.getDescription());
+            result = prepStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        return result;
+    }
+
+
+
+    }
+
+    /*public TableView queryToTable() throws SQLException, ClassNotFoundException {
+        TableView result = new TableView();
+        ObservableList data = FXCollections.observableArrayList();
+        DbHandler databaseHandler = new DbHandler();
+
+        //SQL FOR SELECTING ALL TASKS
+        String query= "SELECT * FROM " + Config.TASKS_TABLE;
+        //ResultSet
+        ResultSet rs = databaseHandler.getDbConnection().createStatement().executeQuery(query);
+
+
+            for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
+                final int j = i;
+                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
+                col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){
+                    public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                        return new SimpleStringProperty(param.getValue().get(j).toString());
+                    }
+                });
+                result.getColumns().addAll(col);
+            }
+
+            while(rs.next()){
+                ObservableList<String> row = FXCollections.observableArrayList();
+                for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++)
+                    row.add(rs.getString(i));
+                data.add(row);
+            }
+
+        return result;
+    }*/
+
+
+

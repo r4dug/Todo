@@ -4,10 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-import java.io.File;
 
 public class Main extends Application {
 
@@ -15,7 +12,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(LOGINFXML_PATH));
+      // Parent root = FXMLLoader.load(getClass().getResource("/fxml/taskForm.fxml"));
+
         primaryStage.setTitle("TodoList Application");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();

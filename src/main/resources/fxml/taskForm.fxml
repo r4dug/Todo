@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="taskFormAnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TaskFormController">
+   <children>
+      <TextField fx:id="taskField" layoutX="137.0" layoutY="64.0" prefHeight="41.0" prefWidth="303.0" promptText="Task">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="descriptionField" layoutX="137.0" layoutY="145.0" prefHeight="108.0" prefWidth="303.0" promptText="Description">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Button fx:id="saveTaskButton" layoutX="163.0" layoutY="335.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="165.0" style="-fx-background-color: #dd0808;" text="Save Task" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+      <ImageView fitHeight="46.0" fitWidth="41.0" layoutX="96.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../description_black.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="96.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../today_black.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="showTaskButton" layoutX="400.0" layoutY="335.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="165.0" style="-fx-background-color: #3778a1;" text="Show Tasks" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

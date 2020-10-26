@@ -29,13 +29,12 @@
                      </font>
                   </Button>
                </children></AnchorPane>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="38.0" prefHeight="48.0" prefWidth="199.0" text="TO DO APP">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="32.0" prefHeight="48.0" prefWidth="199.0" text="TO DO APP">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

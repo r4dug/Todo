@@ -3,13 +3,13 @@ package sample.model;
 public class Task {
 
     private String task;
-    private long dateCreated;
+    private String dateCreated;
     private String description;
 
     public Task() {
     }
 
-    public Task(String task, long dateCreated, String description) {
+    public Task(String task, String dateCreated, String description) {
         this.task = task;
         this.dateCreated = dateCreated;
         this.description = description;
@@ -23,11 +23,11 @@ public class Task {
         this.task = task;
     }
 
-    public long getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(long dateCreated) {
+    public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 
