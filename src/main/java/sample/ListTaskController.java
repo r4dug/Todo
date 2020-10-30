@@ -1,15 +1,10 @@
 package sample;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 import sample.Database.Config;
 import sample.Database.DbHandler;
 import sample.model.Task;
@@ -37,25 +32,21 @@ public class ListTaskController {
     @FXML
     void initialize() {
 
-        assert taskTableView != null : "fx:id=\"taskTableView\" was not injected: check your FXML file 'listTask.fxml'.";
-     //      colTask.setCellValueFactory(
-    //            new PropertyValueFactory<Task,String>("task"));
+        // assert taskTableView != null : "fx:id=\"taskTableView\" was not injected: check your FXML file 'listTask.fxml'.";
+        // colTask.setCellValueFactory(
+        // new PropertyValueFactory<Task,String>("task"));
+
         colTask.setCellValueFactory(features -> features.getValue().taskColumn);
         colDescription.setCellValueFactory(features -> features.getValue().descriptionColumn);
         colDate.setCellValueFactory(features -> features.getValue().dateColumn);
-       DbHandler dbHandler = new DbHandler();
-        try{
-           dbHandler.getDbConnection();
+
+        DbHandler dbHandler = new DbHandler();
+
+        try {
+            dbHandler.getDbConnection();
             buildData();
+        } catch (SQLException | ClassNotFoundException ce) {
         }
-        catch(SQLException | ClassNotFoundException ce){
-
-        }
-
-
-
-        //  taskListView.getItems().addAll(addItems());
-
     }
 
     public void buildData() {

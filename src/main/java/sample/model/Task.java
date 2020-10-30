@@ -45,9 +45,15 @@ public class Task {
         this.description = description;
     }
 
-    public String getTaskColumn() {return taskColumn.get();}
+    public String getTaskColumn() {
+        return taskColumn.get();
+    }
 
-    public String getDescriptionColumn() {return descriptionColumn.get();}
+    public String getDescriptionColumn() {
+        return descriptionColumn.get();
+    }
 
-    public String getDateColumn() {return dateColumn.get();}
+    public String getDateColumn() {
+        return dateColumn.get();
+    }
 }

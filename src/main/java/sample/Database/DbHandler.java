@@ -13,11 +13,11 @@ import sample.model.User;
 import javax.xml.transform.Result;
 import java.sql.*;
 
-public class DbHandler extends Config{
+public class DbHandler extends Config {
 
     Connection dbConnection;
 
-    public Connection getDbConnection() throws ClassNotFoundException , SQLException {
+    public Connection getDbConnection() throws ClassNotFoundException, SQLException {
 
         String connectionString = "jdbc:mysql://" + dbHost + ":"
                 + dbPort + "/"
@@ -25,7 +25,7 @@ public class DbHandler extends Config{
 
         Class.forName("com.mysql.jdbc.Driver");
 
-        dbConnection = DriverManager.getConnection(connectionString,dbUser,dbPass);
+        dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
 
         return dbConnection;
     }
@@ -56,14 +56,14 @@ public class DbHandler extends Config{
         ResultSet result = null;
 
         if (!user.getUsername().equals("") || !user.getPassword().equals("")) {
-            String query= "SELECT * FROM " + Config.USERS_TABLE + " WHERE " + Config.USERS_USERNAME +
+            String query = "SELECT * FROM " + Config.USERS_TABLE + " WHERE " + Config.USERS_USERNAME +
                     "=?" + " AND " + Config.USERS_PASSWORD + "=?";
 
             try {
                 PreparedStatement prepStatement = getDbConnection().prepareStatement(query);
-                prepStatement.setString(1,user.getUsername());
-                prepStatement.setString(2,user.getPassword());
-               result = prepStatement.executeQuery();
+                prepStatement.setString(1, user.getUsername());
+                prepStatement.setString(2, user.getPassword());
+                result = prepStatement.executeQuery();
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
@@ -71,7 +71,7 @@ public class DbHandler extends Config{
             }
 
 
-        }else {
+        } else {
             System.out.println("Please enter a valid username/password");
         }
 
@@ -102,13 +102,13 @@ public class DbHandler extends Config{
     public ResultSet showTasks(Task task) {
         ResultSet result = null;
 
-        String query= "SELECT * FROM " + Config.TASKS_TABLE;
+        String query = "SELECT * FROM " + Config.TASKS_TABLE;
 
         try {
             PreparedStatement prepStatement = getDbConnection().prepareStatement(query);
-            prepStatement.setString(1,task.getTask());
-            prepStatement.setString(2,task.getDateCreated());
-            prepStatement.setString(2,task.getDescription());
+            prepStatement.setString(1, task.getTask());
+            prepStatement.setString(2, task.getDateCreated());
+            prepStatement.setString(2, task.getDescription());
             result = prepStatement.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -121,8 +121,7 @@ public class DbHandler extends Config{
     }
 
 
-
-    }
+}
 
     /*public TableView queryToTable() throws SQLException, ClassNotFoundException {
         TableView result = new TableView();
