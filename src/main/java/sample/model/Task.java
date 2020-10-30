@@ -7,7 +7,6 @@ public class Task {
     private String task;
     private String dateCreated;
     private String description;
-
     public SimpleStringProperty taskColumn = new SimpleStringProperty();
     public SimpleStringProperty descriptionColumn = new SimpleStringProperty();
     public SimpleStringProperty dateColumn = new SimpleStringProperty();

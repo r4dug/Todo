@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import sample.Database.DbHandler;
 import sample.model.Task;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -36,29 +37,20 @@ public class TaskFormController {
     @FXML
     void initialize() {
 
-            saveTaskButton.setOnAction(actionEvent -> {
-                    
-                createTask();
+        saveTaskButton.setOnAction(actionEvent -> {
+            createTask();
+        });
 
-            });
+        showTaskButton.setOnAction(actionEvent -> {
 
-            showTaskButton.setOnAction(actionEvent -> {
+            try {
+                AnchorPane listTaskAnchorPane = FXMLLoader.load(getClass().getResource("/fxml/listTask.fxml"));
 
-                try {
-                    AnchorPane listTaskAnchorPane = FXMLLoader.load(getClass().getResource("/fxml/listTask.fxml"));
-
-                    taskFormAnchorPane.getChildren().setAll(listTaskAnchorPane);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                showTasks();
-            });
-    }
-
-    private void showTasks() {
-
-
-
+                taskFormAnchorPane.getChildren().setAll(listTaskAnchorPane);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     private void createTask() {
@@ -67,7 +59,7 @@ public class TaskFormController {
         String taskInput = taskField.getText();
         String descriptionInput = descriptionField.getText();
 
-        Task task = new Task(taskInput,formattedDate,descriptionInput);
+        Task task = new Task(taskInput, formattedDate, descriptionInput);
 
         databaseHandler.addTask(task);
 
