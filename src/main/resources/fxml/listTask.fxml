@@ -6,7 +6,6 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #46b9b9;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ListTaskController">
    <children>
-      <ListView fx:id="taskListView" layoutX="236.0" layoutY="115.0" prefHeight="242.0" prefWidth="328.0" />
       <AnchorPane prefHeight="67.0" prefWidth="800.0" style="-fx-background-color: #D3D3D3;">
          <children>
             <Label alignment="CENTER" layoutX="317.0" layoutY="14.0" prefHeight="40.0" prefWidth="154.0" text="Tasks">
@@ -16,5 +15,12 @@
             </Label>
          </children>
       </AnchorPane>
+      <TableView fx:id="taskTableView" layoutX="55.0" layoutY="89.0" prefHeight="391.0" prefWidth="701.0">
+        <columns>
+          <TableColumn fx:id="colTask" prefWidth="142.0" text="Tasks" />
+          <TableColumn fx:id="colDescription" prefWidth="319.0" text="Description" />
+            <TableColumn fx:id="colDate" prefWidth="235.0" text="DateCreated" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

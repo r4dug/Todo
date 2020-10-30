@@ -1,10 +1,16 @@
 package sample.model;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Task {
 
     private String task;
     private String dateCreated;
     private String description;
+
+    public SimpleStringProperty taskColumn = new SimpleStringProperty();
+    public SimpleStringProperty descriptionColumn = new SimpleStringProperty();
+    public SimpleStringProperty dateColumn = new SimpleStringProperty();
 
     public Task() {
     }
@@ -38,4 +44,10 @@ public class Task {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getTaskColumn() {return taskColumn.get();}
+
+    public String getDescriptionColumn() {return descriptionColumn.get();}
+
+    public String getDateColumn() {return dateColumn.get();}
 }

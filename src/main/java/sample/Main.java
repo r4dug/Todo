@@ -12,8 +12,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource(LOGINFXML_PATH));
-      // Parent root = FXMLLoader.load(getClass().getResource("/fxml/taskForm.fxml"));
+      //  Parent root = FXMLLoader.load(getClass().getResource(LOGINFXML_PATH));
+       Parent root = FXMLLoader.load(getClass().getResource("/fxml/taskForm.fxml"));
 
         primaryStage.setTitle("TodoList Application");
         primaryStage.setScene(new Scene(root, 800, 600));
